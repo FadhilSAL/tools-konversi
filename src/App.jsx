@@ -283,7 +283,7 @@ function handleKonversi(){
           <option value="berat">berat</option>
           <option value="panjang">panjang</option>
       </select>
-      <div className='container mx-auto flex justify-between flex-wrap'>
+      <div className='container mx-auto flex justify-between flex-wrap xs:justify-center ssm:justify-between'>
         <div  className='flex flex-wrap  mt-5'>
            <select name="opsi" className='w-full text-black' onChange={(e)=>setFromOpsi(e.target.value)}>
             {
