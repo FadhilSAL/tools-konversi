@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+const fromInput = document.getElementById('fromInput');
 
 export default function App() {
  
@@ -41,7 +42,8 @@ useEffect(()=>{
 
 function handleOpsi(e){
 
-setToValue('');
+ document.getElementById('fromInput').value='';
+setToValue(0);
 
   if(e.target.value == 'panjang'){
     setFromOpsi('km');
@@ -295,10 +297,10 @@ function handleKonversi(){
           
             
            </select>
-          <input type="text" placeholder='0' className='w-full bg-white py-2 px-4' onChange={(e)=>setFromValue(e.target.value)}/>
+          <input type="text" placeholder='0' className='w-full bg-white py-2 px-4' onChange={(e)=>setFromValue(e.target.value)} id='fromInput'/>
         </div>
         <div  className='flex flex-wrap  mt-5'>
-           <select name="opsi" className='w-full text-black' onChange={(e)=>setToOpsi(e.target.value)}>
+           <select name="opsi" className='w-full text-black' onChange={(e)=> setToOpsi(e.target.value) }>
             {
 
               Object.entries(opsi).map(([unit,content])=>{
@@ -308,7 +310,7 @@ function handleKonversi(){
           
             
            </select>
-          <input type="text" placeholder='0' className='w-full bg-white py-2 px-4' value={numberFromat.format(toValue)} disabled/>
+          <input type="text" placeholder='0' className='w-full bg-white py-2 px-4' value={numberFromat.format(toValue)} id='toInput' disabled/>
         </div>
         <div className='w-full flex justify-center mt-7'>
 
