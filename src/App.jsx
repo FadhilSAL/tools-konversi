@@ -40,6 +40,23 @@ useEffect(()=>{
 },[])
 
 
+
+function handleSelect(e){
+
+
+
+
+
+if(e.target.id == 'sel1'){
+  setFromOpsi(e.target.value);
+
+}else{
+  setToValue(0);
+  setToOpsi(e.target.value);
+}
+}
+
+
 function handleOpsi(e){
 
  document.getElementById('fromInput').value='';
@@ -287,7 +304,9 @@ function handleKonversi(){
       </select>
       <div className='container mx-auto flex justify-between flex-wrap xs:justify-center ssm:justify-between'>
         <div  className='flex flex-wrap  mt-5'>
-           <select name="opsi" className='w-full text-black' onChange={(e)=>setFromOpsi(e.target.value)}>
+           <select name="opsi" className='w-full text-black' onChange={(e)=>//setFromOpsi(e.target.value) 
+handleSelect(e)
+           } id='sel1'>
             {
 
               Object.entries(opsi).map(([unit,content])=>{
@@ -300,7 +319,9 @@ function handleKonversi(){
           <input type="text" placeholder='0' className='w-full bg-white py-2 px-4' onChange={(e)=>setFromValue(e.target.value)} id='fromInput'/>
         </div>
         <div  className='flex flex-wrap  mt-5'>
-           <select name="opsi" className='w-full text-black' onChange={(e)=> setToOpsi(e.target.value) }>
+           <select name="opsi" className='w-full text-black' onChange={(e)=> //setToOpsi(e.target.value) 
+           handleSelect(e)
+           }>
             {
 
               Object.entries(opsi).map(([unit,content])=>{
