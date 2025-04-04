@@ -46,12 +46,12 @@ function handleSelect(e){
 
 
 
+  setToValue(0);
 
 if(e.target.id == 'sel1'){
   setFromOpsi(e.target.value);
 
 }else{
-  setToValue(0);
   setToOpsi(e.target.value);
 }
 }
