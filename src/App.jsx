@@ -12,6 +12,20 @@ const [toValue,setToValue] = useState('');
 
 const numberFromat = new Intl.NumberFormat('id-ID',{maximumFractionDigits:20});
 
+const satuanVolumeLiter = {
+  kl:'kiloliter',
+  l:'liter',
+
+  hl:'hektoliter',
+  dal:'dekaliter',
+  dl:'desiliter',
+  cl:'centiliter',
+  ml:'mililiter'
+}
+
+
+
+
 const satuanBerat = {
   kg:'kilogram',
   g:'gram',
@@ -72,6 +86,11 @@ setOpsi(satuanPanjang)
     setToOpsi('kg')
     setOpsi(satuanBerat)
   }
+if(e.target.value == 'volumeLiter'){
+    setFromOpsi('kl');
+     setToOpsi('kl');
+     setOpsi(satuanVolumeLiter);
+}
 }
 
 function handleKonversi(){
@@ -82,56 +101,58 @@ function handleKonversi(){
   if(fromOpsi == toOpsi){
     setToValue(fromValue*hasil)
   }
-  else if(fromOpsi == 'kg' || fromOpsi == 'km'){
-    if(toOpsi== 'g' ||  toOpsi == 'm'){
+  else if(fromOpsi == 'kg' || fromOpsi == 'km' || fromOpsi == 'kl'){
+    if(toOpsi== 'g' ||  toOpsi == 'm' || toOpsi == 'l'){
       setToValue(fromValue*1000)
     }
     if(toOpsi == 'ton'){
       setToValue(fromValue/1000)
     }
-    if(toOpsi == 'hg' || toOpsi == 'hm'){
+    if(toOpsi == 'hg' || toOpsi == 'hm' || toOpsi == 'hl'){
       setToValue(fromValue*10)
     }
-    if(toOpsi == 'dag' || toOpsi  == 'dam'){
+    if(toOpsi == 'dag' || toOpsi  == 'dam' || toOpsi == 'dal'){
       setToValue(fromValue*100)
     }
-    if(toOpsi == 'dg' || toOpsi == 'dm'){
+    if(toOpsi == 'dg' || toOpsi == 'dm' || toOpsi == 'dl'){
       setToValue(fromValue*10000)
 
     }
-    if(toOpsi == 'cg' || toOpsi == 'cm'){
+    if(toOpsi == 'cg' || toOpsi == 'cm' || toOpsi == 'cl'){
       setToValue(fromValue * 100000);
 
     }
-    if(toOpsi == 'mg'  || toOpsi == 'mm'){
+    if(toOpsi == 'mg'  || toOpsi == 'mm' || toOpsi == 'ml'){
       setToValue(fromValue*1000000)
     }
   }
-  else if(fromOpsi == 'g' || fromOpsi == 'm'){
-    if(toOpsi== 'kg'|| toOpsi == 'km'){
+  else if(fromOpsi == 'g' || fromOpsi == 'm' || fromOpsi == 'l'){
+    if(toOpsi== 'kg'|| toOpsi == 'km' || toOpsi == 'kl'){
       setToValue(fromValue/1000)
     }
     if(toOpsi == 'ton'){
       setToValue(Number(fromValue/1000000))
     }
-    if(toOpsi == 'hg'|| toOpsi == 'hm'){
+    if(toOpsi == 'hg'|| toOpsi == 'hm' || toOpsi == 'hl'){
       setToValue(fromValue/100)
     }
-    if(toOpsi == 'dag' || toOpsi == 'dam'){
+    if(toOpsi == 'dag' || toOpsi == 'dam' || toOpsi == 'dal'){
       setToValue(fromValue/10)
     }
-    if(toOpsi == 'dg' || toOpsi == 'dm'){
+    if(toOpsi == 'dg' || toOpsi == 'dm' || toOpsi == 'dl'){
       setToValue(fromValue*10)
 
     }
-    if(toOpsi == 'cg' || toOpsi == 'cm'){
+    if(toOpsi == 'cg' || toOpsi == 'cm' || toOpsi == 'cl'){
       setToValue(fromValue * 100);
 
     }
-    if(toOpsi == 'mg' || toOpsi == 'mm'){
+    if(toOpsi == 'mg' || toOpsi == 'mm' || toOpsi == 'ml'){
       setToValue(fromValue*1000)
     }
   }
+
+
   else if(fromOpsi == 'ton'){
     if(toOpsi== 'kg'){
       setToValue(fromValue*1000)
@@ -158,138 +179,144 @@ function handleKonversi(){
       setToValue(fromValue*1000000000)
     }
   }
-  else if(fromOpsi == 'hg' || fromOpsi == 'hm'){
-    if(toOpsi== 'kg' || toOpsi == 'km'){
+  else if(fromOpsi == 'hg' || fromOpsi == 'hm' || fromOpsi == 'hl'){
+    if(toOpsi== 'kg' || toOpsi == 'km' || toOpsi == 'kl'){
       setToValue(fromValue/10)
     }
   
-    if(toOpsi == 'g'  || toOpsi == 'm'){
+    if(toOpsi == 'g'  || toOpsi == 'm' || toOpsi == 'l'){
       setToValue(fromValue*100)
     }
     if(toOpsi == 'ton'){
       setToValue(fromValue/10000)
     }
-    if(toOpsi == 'dag' || toOpsi == "dam"){
+    if(toOpsi == 'dag' || toOpsi == "dam" || toOpsi == 'dal'){
       setToValue(fromValue*10)
     }
-    if(toOpsi == 'dg' || toOpsi == 'dm'){
+    if(toOpsi == 'dg' || toOpsi == 'dm' || toOpsi == 'dl'){
       setToValue(fromValue*1000)
 
     }
-    if(toOpsi == 'cg' || toOpsi == 'cm'){
+    if(toOpsi == 'cg' || toOpsi == 'cm' || toOpsi == 'cl'){
       setToValue(fromValue*10000);
 
     }
-    if(toOpsi == 'mg' || toOpsi == 'mm'){
+    if(toOpsi == 'mg' || toOpsi == 'mm' || toOpsi == 'ml'){
       setToValue(fromValue*100000)
     }
   }
-  else if(fromOpsi == 'dag' || fromOpsi == 'dam'){
-    if(toOpsi== 'kg' || toOpsi == 'km'){
+  else if(fromOpsi == 'dag' || fromOpsi == 'dam' || fromOpsi == 'dal'){
+    if(toOpsi== 'kg' || toOpsi == 'km' || toOpsi == 'kl'){
       setToValue(fromValue/100)
     }
   
-    if(toOpsi == 'g' || toOpsi == 'm'){
+    if(toOpsi == 'g' || toOpsi == 'm' || toOpsi == 'l'){
       setToValue(fromValue*10)
     }
     if(toOpsi == 'ton'){
       setToValue(fromValue/100000)
     }
-    if(toOpsi == 'hg' || toOpsi == 'hm'){
+    if(toOpsi == 'hg' || toOpsi == 'hm' || toOpsi == 'hl'){
       setToValue(fromValue/10)
     }
-    if(toOpsi == 'dg' || toOpsi == 'dm'){
+    if(toOpsi == 'dg' || toOpsi == 'dm' || toOpsi == 'dl') {
       setToValue(fromValue*100)
 
     }
-    if(toOpsi == 'cg' || toOpsi == 'cm'){
+    if(toOpsi == 'cg' || toOpsi == 'cm' || toOpsi == 'cl'){
       setToValue(fromValue*1000);
 
     }
-    if(toOpsi == 'mg' || toOpsi == 'mm'){
+    if(toOpsi == 'mg' || toOpsi == 'mm' || toOpsi == 'ml'){
       setToValue(fromValue*10000)
     }
   }
 
-  else if(fromOpsi == 'dg' ||  fromOpsi == 'dm'){
-    if(toOpsi== 'kg' || toOpsi == 'km'){
+  else if(fromOpsi == 'dg' ||  fromOpsi == 'dm' || fromOpsi == 'dl'){
+    if(toOpsi== 'kg' || toOpsi == 'km' || toOpsi == 'kl'){
       setToValue(fromValue/10000)
     }
   
-    if(toOpsi == 'g' || toOpsi == 'm'){
+    if(toOpsi == 'g' || toOpsi == 'm' || toOpsi == 'l'){
       setToValue(fromValue/10)
     }
     if(toOpsi == 'ton'){
       setToValue(fromValue/10000000)
     }
-    if(toOpsi == 'hg' || toOpsi == 'hm'){
+    if(toOpsi == 'hg' || toOpsi == 'hm' || toOpsi == 'hl'){
       setToValue(fromValue/1000)
     }
-    if(toOpsi == 'dag' || toOpsi == 'dam'){
+    if(toOpsi == 'dag' || toOpsi == 'dam' || toOpsi == 'dal'){
       setToValue(fromValue/100)
 
     }
-    if(toOpsi == 'cg' || toOpsi == 'cm'){
+    if(toOpsi == 'cg' || toOpsi == 'cm' || toOpsi == 'cl'){
       setToValue(fromValue*10);
 
     }
-    if(toOpsi == 'mg' || toOpsi == 'mm'){
+    if(toOpsi == 'mg' || toOpsi == 'mm' || toOpsi == 'ml'){
       setToValue(fromValue*100)
     }
   }
-  else if(fromOpsi == 'cg' || fromOpsi == 'cm'){
-    if(toOpsi== 'kg' || toOpsi=='kg' ){
+  else if(fromOpsi == 'cg' || fromOpsi == 'cm' || fromOpsi == 'cl'){
+    if(toOpsi== 'kg' || toOpsi=='kg' || toOpsi == 'kl' ){
       setToValue(fromValue/100000)
     }
   
-    if(toOpsi == 'g' || toOpsi == 'm'){
+    if(toOpsi == 'g' || toOpsi == 'm' || toOpsi == 'l'){
       setToValue(fromValue/100)
     }
     if(toOpsi == 'ton'){
       setToValue(fromValue/100000000)
     }
-    if(toOpsi == 'hg' || toOpsi == 'hm'){
+    if(toOpsi == 'hg' || toOpsi == 'hm' || toOpsi == 'hl'){
       setToValue(fromValue/10000)
     }
-    if(toOpsi == 'dag' || toOpsi == 'dam'){
+    if(toOpsi == 'dag' || toOpsi == 'dam' || toOpsi == 'dal'){
       setToValue(fromValue/1000)
 
     }
-    if(toOpsi == 'dg' || toOpsi == 'dm'){
+    if(toOpsi == 'dg' || toOpsi == 'dm' || toOpsi == 'dl'){
       setToValue(fromValue/10);
 
     }
-    if(toOpsi == 'mg' || toOpsi == 'mm'){
+    if(toOpsi == 'mg' || toOpsi == 'mm' || toOpsi == 'ml'){
       setToValue(fromValue*10)
     }
   }
-  else if(fromOpsi == 'mg' || fromOpsi == 'mm'){
-    if(toOpsi== 'kg' || toOpsi == 'km'){
+  else if(fromOpsi == 'mg' || fromOpsi == 'mm' || fromOpsi == 'ml') {
+    if(toOpsi== 'kg' || toOpsi == 'km' || toOpsi == 'kl'){
       setToValue(fromValue/1000000)
     }
   
-    if(toOpsi == 'g' || toOpsi == 'm'){
+    if(toOpsi == 'g' || toOpsi == 'm' || toOpsi == 'l'){
       setToValue(fromValue/1000)
     }
     if(toOpsi == 'ton'){
       setToValue(fromValue/1000000000)
     }
-    if(toOpsi == 'hg' || toOpsi == 'hm'){
+    if(toOpsi == 'hg' || toOpsi == 'hm' || toOpsi == 'hl'){
       setToValue(fromValue/100000)
     }
-    if(toOpsi == 'dag' || toOpsi == 'dam'){
+    if(toOpsi == 'dag' || toOpsi == 'dam' || toOpsi == 'dal'){
       setToValue(fromValue/10000)
 
     }
-    if(toOpsi == 'dg' || toOpsi == 'dm'){
+    if(toOpsi == 'dg' || toOpsi == 'dm' || toOpsi == 'dl'){
       setToValue(fromValue/100);
 
     }
-    if(toOpsi == 'cg'  || toOpsi == 'cm'){
+    if(toOpsi == 'cg'  || toOpsi == 'cm' || toOpsi == 'cl'){
       setToValue(fromValue/10)
     }
   }
 }
+
+
+function handl(e){
+  setFromValue(e.target.value)
+   setToValue(0)
+  }
 
   return (
     <>
@@ -299,8 +326,9 @@ function handleKonversi(){
 
       <h1 className='w-full text-center text-4xl text-white'>konversi satuan</h1>
       <select name="konv" onChange={handleOpsi}>
-          <option value="berat">berat</option>
-          <option value="panjang">panjang</option>
+          <option value="berat">Berat</option>
+          <option value="panjang">Panjang</option>
+          <option value="volumeLiter">Volume Liter</option>
       </select>
       <div className='container mx-auto flex justify-between flex-wrap xs:justify-center ssm:justify-between'>
         <div  className='flex flex-wrap  mt-5'>
@@ -310,13 +338,13 @@ handleSelect(e)
             {
 
               Object.entries(opsi).map(([unit,content])=>{
-                return(<option key={unit} value={unit}>{content}</option>)
+                return(<option key={unit} value={unit}>{content} ({unit})</option>)
               })
             }
           
             
            </select>
-          <input type="text" placeholder='0' className='w-full bg-white py-2 px-4' onChange={(e)=>setFromValue(e.target.value)} id='fromInput'/>
+          <input type="text" placeholder='0' className='w-full bg-white py-2 px-4' onChange={handl} id='fromInput'/>
         </div>
         <div  className='flex flex-wrap  mt-5'>
            <select name="opsi" className='w-full text-black' onChange={(e)=> //setToOpsi(e.target.value) 
@@ -325,7 +353,7 @@ handleSelect(e)
             {
 
               Object.entries(opsi).map(([unit,content])=>{
-                return(<option key={unit} value={unit}>{content}</option>)
+                return(<option key={unit} value={unit}>{content} ({unit})</option>)
               })
             }
           
